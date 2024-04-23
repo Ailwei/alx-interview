@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """Pascal function"""
     if n <= 0:
         return []
 
