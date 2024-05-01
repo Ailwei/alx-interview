@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from collections import deque
 """
 A python module that stermines if all boxes can can be opened from a list of lists
@@ -30,3 +32,5 @@ def canUnlockAll(boxes):
                 queue.append(key)
 
     return all(visited)
+
+
