@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 """A module for determining if all boxes can be opened from a list of lists."""
 
+
 def canUnlockAll(boxes=[]):
     """
     Determines if all the boxes can be opened.
 
     Args:
-    - boxes (list of list of int): A list of boxes, where each box is represented by a list of integers
-                                   indicating the keys it contains. Defaults to an empty list.
-
+    - boxes (list of list of int): A list of boxes,
+    where each box is represented by a list of integers
     Returns:
     - bool: True if all boxes can be opened, False otherwise.
     """
@@ -25,6 +25,7 @@ def canUnlockAll(boxes=[]):
         return False
 
     return True
+
 
 if __name__ == '__main__':
     boxes = [
