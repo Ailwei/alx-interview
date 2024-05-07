@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+"""Minimum Operations"""
+
+
+def min_operations(target_count):
+    """
+    Calculates the fewest number of operations needed to result in exactly
+    'target_count' number of 'H' characters in a text file, given only two
+    allowed operations: Copy All and Paste.
+    
+    Args:
+        target_count (int): The desired count of 'H' characters in the file.
+        
+    Returns:
+        int: The minimum number of operations required.
+        
+    If achieving 'target_count' characters is impossible, returns 0.
+    """
+    if not isinstance(target_count, int):
+        return 0
+
+    operations = 0
+    iterator = 2
+    while iterator <= target_count:
+        if target_count % iterator == 0:
+            target_count //= iterator
+            operations += iterator
+            iterator = 1
+        iterator += 1
+    return operations
