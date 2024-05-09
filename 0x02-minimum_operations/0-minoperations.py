@@ -3,19 +3,10 @@
 """Minimum Operations"""
 
 
-def min_operations(target_count):
+def minOperations(target_count):
     """
     Calculates the fewest number of operations needed to result in exactly
-    'target_count' number of 'H' characters in a text file, given only two
-    allowed operations: Copy All and Paste.
-    
-    Args:
-        target_count (int): The desired count of 'H' characters in the file.
-        
-    Returns:
-        int: The minimum number of operations required.
-        
-    If achieving 'target_count' characters is impossible, returns 0.
+    'target_count' number of 'H' characters in a text file, given only
     """
     if not isinstance(target_count, int):
         return 0
