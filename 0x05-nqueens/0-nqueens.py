@@ -1,45 +1,43 @@
 #!/usr/bin/python3
 """
-
+N QUEENS ALGORITHM WITH BACKTRACKING (RECURSION INSIDE LOOP)
 """
-
 import sys
 
 
-def is_safe(board, row, col, N):
-    """
-    check the column on the upper side
-    """
+class NQueen:
+    """Class for solving N Queen Problem"""
 
-    for i in range(row):
-        if board[i] == col:
-            return False
+    def __init__(self, n):
+        """Initialize global variables"""
+        self.n = n
+        self.x = [0 for _ in range(n + 1)]
+        self.res = []
 
-    # check upper diagonal on the left side
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i] == j:
-            return False
-
+    def place(self, k, i):
+        """Check if the k-th queen can be placed in the i-th column
+        or if there are attacking queens in the same row or diagonal"""
+        for j in range(1, k):
+            if self.x[j] == i or abs(self.x[j] - i) == abs(j - k):
+                return False
         return True
 
-
-def solve_nqueens(N):
-    def backtrack(row):
-        if row == N:
-            solution = [[i, board[i]] for i in range(N)]
-            solutions.append(solution)
-            return
-
-        for col in range(N):
-            if is_safe(board, row, col, N):
-                board[row] = col
-                backtrack(row + 1)
-                board[row] = -1
-
-    solutions = []
-    board = [-1] * N
-    backtrack(0)
-    return solutions
+    def nQueen(self, k):
+        """i
+        Try to place every queen on the board
+        """
+        for i in range(1, self.n + 1):
+            if self.place(k, i):
+                self.x[k] = i
+                if k == self.n:
+                    solution = [
+                            [row - 1, self.x[row] - 1]
+                            for row in range(1, self.n + 1)
+                            ]
+                    self.res.append(solution)
+                else:
+                    self.nQueen(k + 1)
+        return self.res
 
 
 def main():
@@ -57,7 +55,9 @@ def main():
         print("N must be at least 4")
         sys.exit(1)
 
-    solutions = solve_nqueens(N)
+    queen = NQueen(N)
+    solutions = queen.nQueen(1)
+
     for solution in solutions:
         print(solution)
 
